@@ -1,0 +1,12 @@
+# MCP Server dependencies
+mcp>=1.0.0
+fastmcp>=0.1.0
+
+# Yahoo Finance API
+yfinance>=0.2.0
+
+# Logging
+loguru>=0.7.0
+
+# Data validation
+pydantic>=2.0.0

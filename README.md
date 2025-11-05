@@ -1,68 +1,54 @@
-# [INSERT quickstart name here]
+# BYO Agentic Framework
 
-*Section is required. NOTE: any italicized or bracketed text should be deleted
-or replaced.*  
+> **Work in Progress** - This repository is actively evolving with new patterns and examples.
 
-*Replace title & this section with a high-level description
-of your quickstart.* 
+A collection of notebooks demonstrating **how to build AI agents** using **Llama Stack** with different frameworks: pure Llama Stack Responses API, LangChain, and CrewAI.
 
-*Think of it as your elevator pitch. What is the quickstart? What does it do? Why
-should I bother deploying it?*
+This project explores three approaches to building AI agents with tool calling and RAG (Retrieval-Augmented Generation) capabilities, all leveraging **MCP (Model Context Protocol)** for tool integration.
 
-*Need an example README? Look at:
-[vllm-cpu](https://github.com/rh-ai-quickstart/vllm-cpu)*
+**What you'll learn:**
+- Build agents using Llama Stack's native Responses API (no framework dependencies)
+- Integrate LangChain 1.0 agents with MCP tools
+- Create multi-agent RAG systems with CrewAI
+- Deploy containerized MCP servers on OpenShift
 
-*OR, [vLLM Tool Calling](https://github.com/rh-ai-quickstart/vllm-tool-calling)*
-
-*Lastly, include a link to the installation section so the user can start quickly.*
-
-*For example:* 
-
-To see how it's done, jump straight to [installation](#install). 
+To get started, jump to [installation](#install). 
 
 ## Table of contents
 
-*Table of contents is optional, but recommended*
+- [Architecture](#architecture-diagrams)
+- [Requirements](#requirements)
+- [Installation](#install)
+- [Notebooks Overview](#notebooks-overview)
 
-## Detailed description
-*This section is required. This is your chance to describe the AI quickstart.*
+## Architecture diagrams
 
-### See it in action 
+```
+┌─────────────────────────────────────────────┐
+│         Agentic Notebooks                   │
+│  (3 approaches: Primitives, LangChain,      │
+│   CrewAI)                                   │
+└────────┬────────────────────────────────────┘
+         │
+         │ API Calls
+         ▼
+┌─────────────────┐   ┌──────────────────────┐
+│  Llama Stack    │   │  MCP Tools           │
+│  - vLLM Engine  │◄──┤  - Weather Service   │
+│  - Vector Store │   │  - Kubernetes API    │
+│  - Responses API│   │  - Yahoo Finance     │
+└─────────────────┘   └──────────────────────┘
+```
 
-*This section is optional but recommended*
+**Key Components:**
+- **Llama Stack**: Inference engine with OpenAI-compatible API
+- **MCP Servers**: Containerized tool servers (Weather, K8s, Finance)
+- **Vector Stores**: Document storage and retrieval for RAG
+- **Frameworks**: Optional layers (LangChain, CrewAI) for orchestration
 
-### Architecture diagrams
+### References
 
-*Section is required. Put images in `assets/images` folder* 
-
-### References 
-
-*Section required. Include links to supporting information, documentation, or
-learning materials.*
-
-## Requirements
-
-*Section required* 
-
-### Minimum hardware requirements 
-
-*Section is required* 
-
-### Required software 
-
-*Section is required. What software dependencies do they need?* 
-
-### Required permissions
-
-*Section is required. Describe the permissions the user will need. Cluster
-admin? Regular user?*
-
-## Install
-
-*Section is required. Include the explicit steps needed to deploy your
-quickstart. If screenshots are included, remember to put them in the
-`assets/images` folder.*
-
-## Uninstall 
-
-*Section required. Include explicit steps to cleanup quickstart.*
+- [Llama Stack Documentation](https://llamastack.github.io/)
+- [Model Context Protocol (MCP) Specification](https://modelcontextprotocol.io/)
+- [LangChain MCP Adapters](https://github.com/langchain-ai/langchain-mcp)
+- [CrewAI Documentation](https://docs.crewai.com/)

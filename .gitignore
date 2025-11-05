@@ -1,0 +1,9 @@
+*.venv
+*claude*
+*tests*
+.vscode/settings.json
+
+# Environment variables
+.env
+.mcp.json
+ai-hub-config/
