@@ -1,0 +1,39 @@
+FROM registry.access.redhat.com/ubi9/python-311:latest
+
+# Set working directory
+WORKDIR /app
+
+USER root
+
+# Install system dependencies
+RUN dnf update -y && \
+    dnf install -y --allowerasing \
+    curl \
+    && dnf clean all
+
+# Copy requirements first for better caching
+COPY requirements.txt .
+
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application code from src directory
+COPY src/ .
+
+# The UBI Python image uses user 1001 as default
+# Ensure proper ownership of the application directory
+RUN chown -R 1001:0 /app && \
+    chmod -R g=u /app
+
+# Switch to non-root user (1001 is the default user in UBI Python images)
+USER 1001
+
+# Expose port (if needed for HTTP mode in future)
+EXPOSE 8000
+
+# Set environment variables
+ENV PYTHONPATH=/app
+ENV PYTHONUNBUFFERED=1
+
+# Run the server
+CMD ["python", "server.py"]

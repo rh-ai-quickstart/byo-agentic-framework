@@ -6,3 +6,4 @@
 # Environment variables
 .env
 .mcp.json
+ai-hub-config/
