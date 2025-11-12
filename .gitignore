@@ -3,7 +3,11 @@
 *tests*
 .vscode/settings.json
 
+# macOS metadata files
+.DS_Store
+
 # Environment variables
 .env
 .mcp.json
 ai-hub-config/
+.vscode
